@@ -10,12 +10,17 @@ void alloue_grille(int l, int c, grille* g) {
   g->nbc = c;
   g->nbl = l;
 
+  // on alloue un tableau de l cases *g->cellules
   g->cellules = malloc(l * sizeof(*g->cellules));
-  
-  for(int i = 0; i < l; i++){
-    g->cellules[i] = malloc(c * sizeof(*(g->cellules)));
+
+  for(int i = 0; i < l; i++)
+  {
+    // pour chaque case de g->cellules on alloue un tableau de c cases de **g->cellules 
+    g->cellules[i] = malloc(c * sizeof(**g->cellules));
+    
+    // on initialise toutes les cellules comme mortes
     for(int j = 0; j < c; j++)
-      g->cellules[i][j] = NULL;
+      set_morte(i, j, *g);
   }
 }
 

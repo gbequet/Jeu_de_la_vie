@@ -1,16 +1,37 @@
 #include "jeu.h"
 
-int compte_voisins_vivants(int i, int j, grille g) {
-  int v = 0;
-  return v;
+int compte_voisins_vivants(int i, int j, grille *g) {
+  int nb_voisin = 0;
+  int cellule = g->cellules[i][j];
+
+  for(int n = -1; n <= 1; n++)
+  {
+    for(int m = -1; m <= 1; m++)
+    {
+      if (est_vivante(modulo(i+n, g->nbc), modulo(j+m, g->nbl), *g))
+        nb_voisin++;
+    }
+  }
+
+  return nb_voisin;
 }
 
 void evolue(grille *g, grille *gc) {
   copie_grille (g,gc); // copie temporaire de la grille
-  for (int i=0; i < g->nbl; i++) {
-    for (int j=0; j < g->nbc; ++j) {
-      /*set_vivante(i, j, *g);*/
-      /*set_morte(i, j, *g);*/
+  for (int i=0; i < g->nbl; i++) 
+  {
+    for (int j=0; j < g->nbc; ++j) 
+    {
+      if(est_vivante(i, j, *gc))
+      {
+        if (compte_voisins_vivants(i, j, gc) != 2 && compte_voisins_vivants(i, j, gc) != 3)
+          set_morte(i, j, *g); // si la cellule est vivante et qu'elle n'a ni 2 ni 3 voisins vivants alors elle meurt
+      }
+      else
+      {
+        if (compte_voisins_vivants(i, j, gc) == 3)
+          set_vivante(i, j, *g); // si la cellule est morte et qu'elle a 3 voisins vivants alors elle vit
+      }
     }
   }
 }
