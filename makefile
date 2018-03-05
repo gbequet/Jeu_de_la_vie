@@ -22,5 +22,5 @@ clean :
 
 # archive
 archive :
-	tar -cvf jeu_de_la_vie.tar ../LaVie/
+	tar -cvf *.c *.h makefile .gitignore jeu_de_la_vie.tar
 	gzip jeu_de_la_vie.tar
