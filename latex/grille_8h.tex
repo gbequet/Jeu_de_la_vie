@@ -1,0 +1,184 @@
+\hypertarget{grille_8h}{}\section{grille.\+h File Reference}
+\label{grille_8h}\index{grille.\+h@{grille.\+h}}
+
+
+Declaration et operations sur les grilles.  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structgrille}{grille}}
+\begin{DoxyCompactList}\small\item\em grille contenant les cellules du jeu Une grille est contient son nombre de colonnes, de lignes et un tableau a deux dimensions contenant des celulles qui sont representées par 0 ou 1 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{grille_8h_ae621f51c60aa4fafaa0c9f6c9b5a4036}{alloue\+\_\+grille}} (int l, int c, \mbox{\hyperlink{structgrille}{grille}} $\ast$g)
+\begin{DoxyCompactList}\small\item\em Fonction allouant une grille de l lignes et c colonnes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{grille_8h_a7074b2b15576e9d2b3cd15c3a1dc7012}{libere\+\_\+grille}} (\mbox{\hyperlink{structgrille}{grille}} $\ast$g)
+\begin{DoxyCompactList}\small\item\em Fonction permettant de liberer une grille. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{grille_8h_ac247d94af4c53fe64b28236f0a507bf0}{init\+\_\+grille\+\_\+from\+\_\+file}} (char const $\ast$const filename, \mbox{\hyperlink{structgrille}{grille}} $\ast$g)
+\begin{DoxyCompactList}\small\item\em alloue et initialise une grille a partir d\textquotesingle{}un fichier \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{grille_8h_ae0cbadbe963314bacd54c1a1ea511da7}{set\+\_\+vivante}} (int i, int j, \mbox{\hyperlink{structgrille}{grille}} g)
+\begin{DoxyCompactList}\small\item\em Fonction rendant vivante la cellule(i,j) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{grille_8h_a3c8e6e08e82824278fdf45a4a05dc85a}{set\+\_\+morte}} (int i, int j, \mbox{\hyperlink{structgrille}{grille}} g)
+\begin{DoxyCompactList}\small\item\em Fonction tuant la cellule(i,j) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{grille_8h_aa814881babc3a8e277963a9083c5ebb0}{est\+\_\+vivante}} (int i, int j, \mbox{\hyperlink{structgrille}{grille}} g)
+\begin{DoxyCompactList}\small\item\em Teste si la cellule(i,j) est vivante. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{grille_8h_aa056fcb4fe6e701c92be5237a589dee2}{copie\+\_\+grille}} (const \mbox{\hyperlink{structgrille}{grille}} $\ast$gs, \mbox{\hyperlink{structgrille}{grille}} $\ast$gd)
+\begin{DoxyCompactList}\small\item\em Copie gc dans gd. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Declaration et operations sur les grilles. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{grille_8h_ae621f51c60aa4fafaa0c9f6c9b5a4036}\label{grille_8h_ae621f51c60aa4fafaa0c9f6c9b5a4036}} 
+\index{grille.\+h@{grille.\+h}!alloue\+\_\+grille@{alloue\+\_\+grille}}
+\index{alloue\+\_\+grille@{alloue\+\_\+grille}!grille.\+h@{grille.\+h}}
+\subsubsection{\texorpdfstring{alloue\+\_\+grille()}{alloue\_grille()}}
+{\footnotesize\ttfamily void alloue\+\_\+grille (\begin{DoxyParamCaption}\item[{int}]{l,  }\item[{int}]{c,  }\item[{\mbox{\hyperlink{structgrille}{grille}} $\ast$}]{g }\end{DoxyParamCaption})}
+
+
+
+Fonction allouant une grille de l lignes et c colonnes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & nombre de lignes \\
+\hline
+{\em c} & nombre de colonnes \\
+\hline
+{\em g} & la grille a allouer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La grille avec toutes les celulles initialisée à mortes. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{grille_8h_aa056fcb4fe6e701c92be5237a589dee2}\label{grille_8h_aa056fcb4fe6e701c92be5237a589dee2}} 
+\index{grille.\+h@{grille.\+h}!copie\+\_\+grille@{copie\+\_\+grille}}
+\index{copie\+\_\+grille@{copie\+\_\+grille}!grille.\+h@{grille.\+h}}
+\subsubsection{\texorpdfstring{copie\+\_\+grille()}{copie\_grille()}}
+{\footnotesize\ttfamily void copie\+\_\+grille (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structgrille}{grille}} $\ast$const}]{gs,  }\item[{\mbox{\hyperlink{structgrille}{grille}} $\ast$const}]{gd }\end{DoxyParamCaption})}
+
+
+
+Copie gc dans gd. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gc} & grille qu\textquotesingle{}on souhaite copier \\
+\hline
+{\em gd} & grille ou l\textquotesingle{}on souhaite coller \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void mais gd a ete modifiée par effet de bord 
+\end{DoxyReturn}
+\mbox{\Hypertarget{grille_8h_aa814881babc3a8e277963a9083c5ebb0}\label{grille_8h_aa814881babc3a8e277963a9083c5ebb0}} 
+\index{grille.\+h@{grille.\+h}!est\+\_\+vivante@{est\+\_\+vivante}}
+\index{est\+\_\+vivante@{est\+\_\+vivante}!grille.\+h@{grille.\+h}}
+\subsubsection{\texorpdfstring{est\+\_\+vivante()}{est\_vivante()}}
+{\footnotesize\ttfamily bool est\+\_\+vivante (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j,  }\item[{\mbox{\hyperlink{structgrille}{grille}}}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Teste si la cellule(i,j) est vivante. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & indice de la ligne \\
+\hline
+{\em j} & indice de la colonne \\
+\hline
+{\em g} & grille a laquelle appartient la cellule \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+un booleen 
+\end{DoxyReturn}
+\mbox{\Hypertarget{grille_8h_ac247d94af4c53fe64b28236f0a507bf0}\label{grille_8h_ac247d94af4c53fe64b28236f0a507bf0}} 
+\index{grille.\+h@{grille.\+h}!init\+\_\+grille\+\_\+from\+\_\+file@{init\+\_\+grille\+\_\+from\+\_\+file}}
+\index{init\+\_\+grille\+\_\+from\+\_\+file@{init\+\_\+grille\+\_\+from\+\_\+file}!grille.\+h@{grille.\+h}}
+\subsubsection{\texorpdfstring{init\+\_\+grille\+\_\+from\+\_\+file()}{init\_grille\_from\_file()}}
+{\footnotesize\ttfamily void init\+\_\+grille\+\_\+from\+\_\+file (\begin{DoxyParamCaption}\item[{char const $\ast$const}]{filename,  }\item[{\mbox{\hyperlink{structgrille}{grille}} $\ast$const}]{g }\end{DoxyParamCaption})}
+
+
+
+alloue et initialise une grille a partir d\textquotesingle{}un fichier 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & nom du fichier contenant les conditions de depart du jeu de la vie \\
+\hline
+{\em g} & grille que l\textquotesingle{}on veut modifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void mais la liste a ete modifier par effet de bord 
+\end{DoxyReturn}
+\mbox{\Hypertarget{grille_8h_a7074b2b15576e9d2b3cd15c3a1dc7012}\label{grille_8h_a7074b2b15576e9d2b3cd15c3a1dc7012}} 
+\index{grille.\+h@{grille.\+h}!libere\+\_\+grille@{libere\+\_\+grille}}
+\index{libere\+\_\+grille@{libere\+\_\+grille}!grille.\+h@{grille.\+h}}
+\subsubsection{\texorpdfstring{libere\+\_\+grille()}{libere\_grille()}}
+{\footnotesize\ttfamily void libere\+\_\+grille (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgrille}{grille}} $\ast$}]{g }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant de liberer une grille. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & la grille a liberer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{grille_8h_a3c8e6e08e82824278fdf45a4a05dc85a}\label{grille_8h_a3c8e6e08e82824278fdf45a4a05dc85a}} 
+\index{grille.\+h@{grille.\+h}!set\+\_\+morte@{set\+\_\+morte}}
+\index{set\+\_\+morte@{set\+\_\+morte}!grille.\+h@{grille.\+h}}
+\subsubsection{\texorpdfstring{set\+\_\+morte()}{set\_morte()}}
+{\footnotesize\ttfamily void set\+\_\+morte (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j,  }\item[{\mbox{\hyperlink{structgrille}{grille}}}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Fonction tuant la cellule(i,j) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & indice de la ligne \\
+\hline
+{\em j} & indice de la colonne \\
+\hline
+{\em g} & grille a laquelle appartient la cellule \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void mais la liste a ete modifier par effet de bord 
+\end{DoxyReturn}
+\mbox{\Hypertarget{grille_8h_ae0cbadbe963314bacd54c1a1ea511da7}\label{grille_8h_ae0cbadbe963314bacd54c1a1ea511da7}} 
+\index{grille.\+h@{grille.\+h}!set\+\_\+vivante@{set\+\_\+vivante}}
+\index{set\+\_\+vivante@{set\+\_\+vivante}!grille.\+h@{grille.\+h}}
+\subsubsection{\texorpdfstring{set\+\_\+vivante()}{set\_vivante()}}
+{\footnotesize\ttfamily void set\+\_\+vivante (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j,  }\item[{\mbox{\hyperlink{structgrille}{grille}}}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Fonction rendant vivante la cellule(i,j) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & indice de la ligne \\
+\hline
+{\em j} & indice de la colonne \\
+\hline
+{\em g} & grille a laquelle appartient la cellule \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void mais la liste a ete modifier par effet de bord 
+\end{DoxyReturn}

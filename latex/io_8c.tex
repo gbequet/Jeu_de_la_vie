@@ -1,0 +1,81 @@
+\hypertarget{io_8c}{}\section{io.\+c File Reference}
+\label{io_8c}\index{io.\+c@{io.\+c}}
+
+
+Fonctions d\textquotesingle{}affichage de la grille et de debut du jeu.  
+
+
+{\ttfamily \#include \char`\"{}io.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{io_8c_a1e7ba94b65f6b87555c18b876843e8a5}{affiche\+\_\+grille}} (const \mbox{\hyperlink{structgrille}{grille}} $\ast$g)
+\begin{DoxyCompactList}\small\item\em Affiche une grille. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{io_8c_a533ffe4c44be548352623362bcd53a6c}{efface\+\_\+grille}} (const \mbox{\hyperlink{structgrille}{grille}} $\ast$g)
+\begin{DoxyCompactList}\small\item\em Efface une grille. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{io_8c_ae742108bc57eab6b125cac7b9edd5be1}{debut\+\_\+jeu}} (\mbox{\hyperlink{structgrille}{grille}} $\ast$g, \mbox{\hyperlink{structgrille}{grille}} $\ast$gc)
+\begin{DoxyCompactList}\small\item\em Debute le jeu avec g comme grille de depart a t0. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Fonctions d\textquotesingle{}affichage de la grille et de debut du jeu. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{io_8c_a1e7ba94b65f6b87555c18b876843e8a5}\label{io_8c_a1e7ba94b65f6b87555c18b876843e8a5}} 
+\index{io.\+c@{io.\+c}!affiche\+\_\+grille@{affiche\+\_\+grille}}
+\index{affiche\+\_\+grille@{affiche\+\_\+grille}!io.\+c@{io.\+c}}
+\subsubsection{\texorpdfstring{affiche\+\_\+grille()}{affiche\_grille()}}
+{\footnotesize\ttfamily affiche\+\_\+grille (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structgrille}{grille}} $\ast$}]{g }\end{DoxyParamCaption})}
+
+
+
+Affiche une grille. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & grille a afficher \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void mais la grille a été affichée 
+\end{DoxyReturn}
+\mbox{\Hypertarget{io_8c_ae742108bc57eab6b125cac7b9edd5be1}\label{io_8c_ae742108bc57eab6b125cac7b9edd5be1}} 
+\index{io.\+c@{io.\+c}!debut\+\_\+jeu@{debut\+\_\+jeu}}
+\index{debut\+\_\+jeu@{debut\+\_\+jeu}!io.\+c@{io.\+c}}
+\subsubsection{\texorpdfstring{debut\+\_\+jeu()}{debut\_jeu()}}
+{\footnotesize\ttfamily debut\+\_\+jeu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgrille}{grille}} $\ast$}]{g,  }\item[{\mbox{\hyperlink{structgrille}{grille}} $\ast$}]{gc }\end{DoxyParamCaption})}
+
+
+
+Debute le jeu avec g comme grille de depart a t0. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & grille au moment t \\
+\hline
+{\em gc} & grille qui va servir a garder g en memoire \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void le jeu commence 
+\end{DoxyReturn}
+\mbox{\Hypertarget{io_8c_a533ffe4c44be548352623362bcd53a6c}\label{io_8c_a533ffe4c44be548352623362bcd53a6c}} 
+\index{io.\+c@{io.\+c}!efface\+\_\+grille@{efface\+\_\+grille}}
+\index{efface\+\_\+grille@{efface\+\_\+grille}!io.\+c@{io.\+c}}
+\subsubsection{\texorpdfstring{efface\+\_\+grille()}{efface\_grille()}}
+{\footnotesize\ttfamily efface\+\_\+grille (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structgrille}{grille}} $\ast$}]{g }\end{DoxyParamCaption})}
+
+
+
+Efface une grille. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & grille a effacer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void mais la grille a été affacée 
+\end{DoxyReturn}

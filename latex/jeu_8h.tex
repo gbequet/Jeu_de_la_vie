@@ -1,0 +1,65 @@
+\hypertarget{jeu_8h}{}\section{jeu.\+h File Reference}
+\label{jeu_8h}\index{jeu.\+h@{jeu.\+h}}
+
+
+Declaration des fonctions utiliées durant le jeu.  
+
+
+{\ttfamily \#include \char`\"{}grille.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{jeu_8h_aff367a4f510a763629bd89db70c94860}{compte\+\_\+voisins\+\_\+vivants}} (int i, int j, \mbox{\hyperlink{structgrille}{grille}} $\ast$g)
+\begin{DoxyCompactList}\small\item\em Compte le nombre de voisins d\textquotesingle{}une cellule(i,j) avec bords cycliques. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{jeu_8h_ada8f751a97ad1847db23c5ba17be7802}{evolue}} (\mbox{\hyperlink{structgrille}{grille}} $\ast$g, \mbox{\hyperlink{structgrille}{grille}} $\ast$gc)
+\begin{DoxyCompactList}\small\item\em Fait evoluer la grille g d\textquotesingle{}un pas de temps. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Declaration des fonctions utiliées durant le jeu. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{jeu_8h_aff367a4f510a763629bd89db70c94860}\label{jeu_8h_aff367a4f510a763629bd89db70c94860}} 
+\index{jeu.\+h@{jeu.\+h}!compte\+\_\+voisins\+\_\+vivants@{compte\+\_\+voisins\+\_\+vivants}}
+\index{compte\+\_\+voisins\+\_\+vivants@{compte\+\_\+voisins\+\_\+vivants}!jeu.\+h@{jeu.\+h}}
+\subsubsection{\texorpdfstring{compte\+\_\+voisins\+\_\+vivants()}{compte\_voisins\_vivants()}}
+{\footnotesize\ttfamily int compte\+\_\+voisins\+\_\+vivants (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j,  }\item[{\mbox{\hyperlink{structgrille}{grille}} $\ast$}]{g }\end{DoxyParamCaption})}
+
+
+
+Compte le nombre de voisins d\textquotesingle{}une cellule(i,j) avec bords cycliques. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & index de la ligne \\
+\hline
+{\em j} & index de la colonne \\
+\hline
+{\em g} & grille \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+le nombre de voisins de la cellule(i,j) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{jeu_8h_ada8f751a97ad1847db23c5ba17be7802}\label{jeu_8h_ada8f751a97ad1847db23c5ba17be7802}} 
+\index{jeu.\+h@{jeu.\+h}!evolue@{evolue}}
+\index{evolue@{evolue}!jeu.\+h@{jeu.\+h}}
+\subsubsection{\texorpdfstring{evolue()}{evolue()}}
+{\footnotesize\ttfamily void evolue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgrille}{grille}} $\ast$}]{g,  }\item[{\mbox{\hyperlink{structgrille}{grille}} $\ast$}]{gc }\end{DoxyParamCaption})}
+
+
+
+Fait evoluer la grille g d\textquotesingle{}un pas de temps. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & grille qui a t \\
+\hline
+{\em gc} & grille qui gardera les valeurs initiales de g \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+g a t+1 
+\end{DoxyReturn}
