@@ -1,6 +1,11 @@
+/**
+ * \file io.c
+ * \brief Fonctions d'affichage de la grille et de debut du jeu
+ */
+
 #include "io.h"
 
-static void affiche_trait(int c) {
+static void affiche_trait(int c){
   int i;
   for (i=0; i<c; ++i) printf ("|---");
   printf("|\n");

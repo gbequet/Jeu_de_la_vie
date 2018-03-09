@@ -1,3 +1,8 @@
+/**
+ * \file main.c
+ * \brief Fonction principale
+ */
+
 #include <stdlib.h>
 #include <stdio.h>
 

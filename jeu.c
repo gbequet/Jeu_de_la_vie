@@ -1,8 +1,12 @@
+/**
+ * \file jeu.c
+ * \brief Fonctions appelées lors du jeu
+ */
+
 #include "jeu.h"
 
 int compte_voisins_vivants(int i, int j, grille *g) {
   int nb_voisin = 0;
-  int cellule = g->cellules[i][j];
 
   for(int n = -1; n <= 1; n++)
   {
@@ -12,6 +16,9 @@ int compte_voisins_vivants(int i, int j, grille *g) {
         nb_voisin++;
     }
   }
+
+  if(est_vivante(i,j,*g))
+    nb_voisin--; // car les boucles teste aussi la cellule(i,j)
 
   return nb_voisin;
 }

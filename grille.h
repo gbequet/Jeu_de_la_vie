@@ -11,10 +11,9 @@
 /**
  * \struct grille
  * \brief grille contenant les cellules du jeu
- *
- * Une grille est contient son nombre de colonnes, de lignes
- * et un tableau a deux dimensions contenant des celulles qui
- * sont representées par 0 ou 1
+ *        Une grille est contient son nombre de colonnes, de lignes
+ *        et un tableau a deux dimensions contenant des celulles qui
+ *        sont representées par 0 ou 1
  */
 typedef struct {
   int nbl;

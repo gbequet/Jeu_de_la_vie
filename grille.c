@@ -1,3 +1,8 @@
+/**
+ * \file grille.c
+ * \brief Fonctions sur les grilles
+ */
+
 #include <assert.h>
 #include <errno.h>
 #include <string.h>
@@ -11,15 +16,15 @@ void alloue_grille(int l, int c, grille* g) {
   g->nbl = l;
 
   // on alloue un tableau de l cases *g->cellules
-  g->cellules = malloc(l * sizeof(*g->cellules));
+  g->cellules = malloc(c * sizeof(*g->cellules));
 
-  for(int i = 0; i < l; i++)
+  for(int i = 0; i < c; i++)
   {
     // pour chaque case de g->cellules on alloue un tableau de c cases de **g->cellules 
-    g->cellules[i] = malloc(c * sizeof(**g->cellules));
+    g->cellules[i] = malloc(l * sizeof(**g->cellules));
     
     // on initialise toutes les cellules comme mortes
-    for(int j = 0; j < c; j++)
+    for(int j = 0; j < l; j++)
       set_morte(i, j, *g);
   }
 }
