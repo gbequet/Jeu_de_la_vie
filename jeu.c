@@ -5,19 +5,19 @@
 
 #include "jeu.h"
 
-int compte_voisins_vivants(int i, int j, grille *g) {
+int compte_voisins_vivants(int i, int j, grille g) {
   int nb_voisin = 0;
 
   for(int n = -1; n <= 1; n++)
   {
     for(int m = -1; m <= 1; m++)
     {
-      if (est_vivante(modulo(i+n, g->nbc), modulo(j+m, g->nbl), *g))
+      if (est_vivante(modulo(i+n, g.nbl), modulo(j+m, g.nbc), g))
         nb_voisin++;
     }
   }
 
-  if(est_vivante(i,j,*g))
+  if(est_vivante(i,j,g))
     nb_voisin--; // car les boucles teste aussi la cellule(i,j)
 
   return nb_voisin;
@@ -31,12 +31,12 @@ void evolue(grille *g, grille *gc) {
     {
       if(est_vivante(i, j, *gc))
       {
-        if (compte_voisins_vivants(i, j, gc) != 2 && compte_voisins_vivants(i, j, gc) != 3)
+        if (compte_voisins_vivants(i, j, *gc) != 2 && compte_voisins_vivants(i, j, *gc) != 3)
           set_morte(i, j, *g); // si la cellule est vivante et qu'elle n'a ni 2 ni 3 voisins vivants alors elle meurt
       }
       else
       {
-        if (compte_voisins_vivants(i, j, gc) == 3)
+        if (compte_voisins_vivants(i, j, *gc) == 3)
           set_vivante(i, j, *g); // si la cellule est morte et qu'elle a 3 voisins vivants alors elle vit
       }
     }

@@ -31,7 +31,7 @@ static inline int modulo(int i, int m){
  * \param g grille
  * \return le nombre de voisins de la cellule(i,j)
  */
-int compte_voisins_vivants (int i, int j, grille *g);
+int compte_voisins_vivants (int i, int j, grille g);
 
 /**
  * \fn evolue (grille *g, grille *gc)
