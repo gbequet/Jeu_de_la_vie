@@ -40,13 +40,16 @@ void efface_grille(const grille *g) {
 
 void debut_jeu(grille *g, grille *gc) {
   int c = getchar();
+  int nb_pas = 0;
   while (c != 'q') { // touche 'q' pour quitter
     switch (c) {
       case '\n' :
         { // touche "entree" pour évoluer
+          printf("Temps d'evolution : %d", nb_pas);
           evolue(g,gc);
           efface_grille(g);
           affiche_grille(g);
+          nb_pas++;
           break;
         }
       default :
