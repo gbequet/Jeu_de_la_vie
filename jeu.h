@@ -28,6 +28,7 @@ static inline int modulo(int i, int m){
  * 
  * \param i index de la ligne
  * \param j index de la colonne
+ * \param distance distance de voisinage des cellules
  * \param g grille
  * \return le nombre de voisins de la cellule(i,j)
  */
@@ -40,6 +41,7 @@ int compte_voisins_vivants_c(int i, int j, int distance, grille g);
  * 
  * \param i index de la ligne
  * \param j index de la colonne
+ * \param distance distance de voisinage des cellules
  * \param g grille
  * \return le nombre de voisins de la cellule(i,j)
  */
