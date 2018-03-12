@@ -1,4 +1,4 @@
-.PHONY : all clean archive
+.PHONY : all clean archive doc
 
 # executable
 all : main.o jeu.o io.o grille.o
@@ -19,6 +19,10 @@ grille.o : grille.c grille.h
 # supprime .o et all
 clean :
 	rm -rf *.o all
+
+# Documentation
+doc:
+	doxygen Doxyfile
 
 # archive
 archive :
