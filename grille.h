@@ -92,9 +92,9 @@ inline bool est_vivante(int i, int j, grille g) {
 
 /**
  * \fn copie_grille(const grille *gs, grille *gd)
- * \brief Copie gc dans gd
+ * \brief Copie gs dans gd
  *
- * \param gc grille qu'on souhaite copier
+ * \param gs grille qu'on souhaite copier
  * \param gd grille ou l'on souhaite coller
  * \return void mais gd a ete modifiée par effet de bord
  */

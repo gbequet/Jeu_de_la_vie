@@ -53,8 +53,10 @@ int compte_voisins_vivants_nc(int i, int j, int distance, grille g);
  * 
  * \param g grille qui a t
  * \param gc grille qui gardera les valeurs initiales de g
+ * \param dist distance de voisinage souhaité
+ * \param compte_v pointeur de fonction qui est gere le calcul des voisins vivants (cyclique ou non) de g
  * \return g a t+1
  */
-    void evolue(grille *g, grille *gc);
+void evolue(grille *g, grille *gc, int dist, int (*compte_v)(int, int, int, grille));
 
 #endif

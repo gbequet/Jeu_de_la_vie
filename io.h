@@ -17,7 +17,7 @@
  * \param g grille a afficher
  * \return void mais la grille a été affichée
  */
-void affiche_grille(const grille *g);
+void affiche_grille(const grille *g, unsigned int evol);
 
 /**
  * \fn efface_grille (const grille *g)

@@ -12,8 +12,6 @@ static void affiche_trait(int c){
   return;
 }
 
-/*------------------------------------------------------------------------------------------------------------*/
-
 static void affiche_ligne(int ligne, const grille *g) {
   for (int i=0; i < g->nbc; ++i) {
     if (est_vivante(ligne, i, *g))
@@ -25,10 +23,10 @@ static void affiche_ligne(int ligne, const grille *g) {
   return;
 }
 
-/*------------------------------------------------------------------------------------------------------------*/
-
-void affiche_grille(const grille *g) {
+void affiche_grille(const grille *g, unsigned int evol) {
   printf("\n");
+  printf("Evolution : %u\n", evol);
+
   affiche_trait(g->nbc);
   for (int i=0; i < g->nbl; ++i) {
     affiche_ligne(i, g);
@@ -38,13 +36,9 @@ void affiche_grille(const grille *g) {
   return;
 }
 
-/*------------------------------------------------------------------------------------------------------------*/
-
 void efface_grille(const grille *g) {
-  printf("\n\e[%dA", g->nbl * 2 + 5);
+  printf("\n\e[%dA", g->nbl * 2 + 6);
 }
-
-/*------------------------------------------------------------------------------------------------------------*/
 
 void debut_jeu(grille *g, grille *gc) {
   int c = getchar();
@@ -56,15 +50,16 @@ void debut_jeu(grille *g, grille *gc) {
     switch (c) {
       case '\n' :
         { // touche "entree" pour évoluer
-          printf("Temps d'evolution : %d", nb_pas);
           evolue(g, gc, distance, compte_voisins); // la distance par defaut est 1 et le voisinage par default est cyclique
-          efface_grille(g);
-          affiche_grille(g);
+          efface_grille(gc);
+          affiche_grille(g, nb_pas);
           nb_pas++;
           break;
         }
       case 'c' :
         { // touche 'c' pour activer/desactiver voisinage cyclique
+          getchar(); // pas de bug
+
           if(compte_voisins == compte_voisins_vivants_c){
             printf("Voisinage cyclique désactivé\n");
             compte_voisins = compte_voisins_vivants_nc;
@@ -73,6 +68,8 @@ void debut_jeu(grille *g, grille *gc) {
             printf("Voisinage cyclique a nouveau activé\n");
             compte_voisins = compte_voisins_vivants_c;
           }
+          printf("\n\e[%dA", 3); // remonter de 3 lignes
+          // printf("\r"); // repartir a la marge
           break;
         }
       case 'n' :
@@ -80,6 +77,9 @@ void debut_jeu(grille *g, grille *gc) {
           printf("Veuillez entrer un nouvelle distance de voisinage : \n");
           scanf("%d", &distance);
           printf("À partir de ce moment un voisinage de distance %d sera utilisé\n", distance);
+
+          getchar();
+          printf("\n\e[%dA", 5); // remonter de 3 lignes
           break;
         }
       default :
