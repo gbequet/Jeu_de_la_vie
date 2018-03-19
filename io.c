@@ -14,10 +14,15 @@ static void affiche_trait(int c){
 
 static void affiche_ligne(int ligne, const grille *g) {
   for (int i=0; i < g->nbc; ++i) {
-    if (est_vivante(ligne, i, *g))
-      printf ("| O ");
+    if(est_viable(ligne, i, *g))
+    {
+      if (est_vivante(ligne, i, *g))
+        printf ("| %d ", g->cellules[ligne][i]);
+      else
+        printf ("|   ");
+    }
     else
-      printf ("|   ");
+      printf ("| X ");
   }
   printf("|\n");
   return;
@@ -45,23 +50,24 @@ void debut_jeu(grille *g, grille *gc) {
   int nb_pas = 1;
   int distance = 1;
   int (*compte_voisins)(int, int, int, grille) = compte_voisins_vivants_c;
+  bool vieillissement = false;
   while (c != 'q')
   { // touche 'q' pour quitter
     switch (c) {
       case '\n' :
         { // touche "entree" pour évoluer
-          evolue(g, gc, distance, compte_voisins); // la distance par defaut est 1 et le voisinage par default est cyclique
+          evolue(g, gc, distance, compte_voisins, vieillissement); // la distance par defaut est 1 et le voisinage par default est cyclique
           efface_grille(gc);
           affiche_grille(g, nb_pas);
           nb_pas++;
           break;
         }
       case 'c' :
-        { // touche 'c' pour activer/desactiver voisinage cyclique
+        { // touche 'c' pour activer/desactiver le voisinage cyclique
           getchar(); // pas de bug
 
           if(compte_voisins == compte_voisins_vivants_c){
-            printf("Voisinage cyclique désactivé\n");
+            printf("\r\e[0KVoisinage cyclique désactivé\n");
             compte_voisins = compte_voisins_vivants_nc;
           }
           else{
@@ -71,6 +77,24 @@ void debut_jeu(grille *g, grille *gc) {
           printf("\n\e[%dA", 3); // remonter de 3 lignes
           // printf("\r"); // repartir a la marge
           break;
+        }
+      case 'v' :
+      { // touche 'v' pour activer/desactiver le vieillissement
+        getchar();
+
+        if (vieillissement)
+        {
+          printf("\r\e[0KVieillissement désactivé\n");
+          vieillissement = false;
+        }
+        else
+        {
+          printf("Vieillissement activé\n");
+          vieillissement = true;;
+        }
+        printf("\n\e[%dA", 3); // remonter de 3 lignes
+        // printf("\r"); // repartir a la marge
+        break;
         }
       case 'n' :
         { // touche 'n' pour modifier la distance de voisinage

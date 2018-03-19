@@ -59,6 +59,14 @@ void init_grille_from_file(char const*const filename, grille *const g) {
     set_vivante(l,c,*g);
   }
 
+  int non_viables=0;
+  fscanf(pfile, "%d", & non_viables);
+  for (int n=0; n < non_viables; ++n){
+    fscanf(pfile, "%d", &l);
+    fscanf(pfile, "%d", &c);
+    set_non_viable(l,c,*g);
+  }
+
   fclose (pfile);
   return;
 }
@@ -73,3 +81,5 @@ void copie_grille(const grille *const gs, grille *const gd) {
 extern inline bool est_vivante(int i, int j, grille g);
 extern inline void set_vivante(int i, int j, grille g);
 extern inline void set_morte(int i, int j, grille g);
+extern inline void set_non_viable(int i, int j, grille g);
+extern inline bool est_viable(int i, int j, grille g);

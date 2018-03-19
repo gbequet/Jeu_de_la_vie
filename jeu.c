@@ -53,22 +53,35 @@ int compte_voisins_vivants_nc(int i, int j, int distance, grille g){
   return nb_voisin;
 }
 
-void evolue(grille *g, grille *gc, int dist, int (*compte_v)(int, int, int, grille))
+void evolue(grille *g, grille *gc, int dist, int (*compte_v)(int, int, int, grille), bool vieil)
 {
   copie_grille(g, gc); // copie temporaire de la grille
+
   for (int i = 0; i < gc->nbl; i++)
   {
     for (int j = 0; j < gc->nbc; ++j)
     {
-      if (est_vivante(i, j, *gc))
+      if(est_viable(i, j, *gc))
       {
-        if (compte_v(i, j, dist, *gc) != 2 && compte_v(i, j, dist, *gc) != 3)
-          set_morte(i, j, *g); // si la cellule est vivante et qu'elle n'a ni 2 ni 3 voisins vivants alors elle meurt
-      }
-      else
-      {
-        if (compte_v(i, j, dist, *gc) == 3)
-          set_vivante(i, j, *g); // si la cellule est morte et qu'elle a 3 voisins vivants alors elle vit
+        if (est_vivante(i, j, *gc))
+        {
+          if (compte_v(i, j, dist, *gc) != 2 && compte_v(i, j, dist, *gc) != 3)
+            set_morte(i, j, *g); // si la cellule est vivante et qu'elle n'a ni 2 ni 3 voisins vivants alors elle meurt
+          else
+          { // si la cellules reste en vie
+            if(vieil){
+            if(gc->cellules[i][j] == 8)
+              set_morte(i, j, *g); // elle meurt si ca fait 8 pas de temps
+            else
+              set_vivante(i, j, *g); // sinon on incremente son age
+            }
+          }
+        }
+        else
+        {
+          if (compte_v(i, j, dist, *gc) == 3)
+            set_vivante(i, j, *g); // si la cellule est morte et qu'elle a 3 voisins vivants alors elle vit
+        }
       }
     }
   }

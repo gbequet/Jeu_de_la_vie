@@ -61,7 +61,7 @@ void init_grille_from_file(char const*const filename, grille* g);
  * \return void mais la liste a ete modifier par effet de bord
  */
 inline void set_vivante(int i, int j, grille g) {
-  g.cellules[i][j] = 1;
+  g.cellules[i][j]++;
 }
 
 /**
@@ -77,6 +77,10 @@ inline void set_morte(int i, int j, grille g) {
   g.cellules[i][j] = 0;
 }
 
+inline void set_non_viable(int i, int j, grille g){
+  g.cellules[i][j] = -1;
+}
+
 /**
  * \fn est_vivante(int i, int j, grille g)
  * \brief Teste si la cellule(i,j) est vivante
@@ -86,8 +90,12 @@ inline void set_morte(int i, int j, grille g) {
  * \param g grille a laquelle appartient la cellule
  * \return un booleen
  */
-inline bool est_vivante(int i, int j, grille g) {
-  return g.cellules[i][j] == 1;
+inline bool est_vivante(int i, int j, grille g){
+  return g.cellules[i][j] >= 1;
+}
+
+inline bool est_viable(int i, int j, grille g) {
+  return g.cellules[i][j] != -1;
 }
 
 /**
