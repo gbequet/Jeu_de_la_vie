@@ -6,9 +6,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "grille.h"
-#include "io.h"
-#include "jeu.h"
+#include "../inc/grille.h"
+#include "../inc/io.h"
+#include "../inc/jeu.h"
 
 int main (int argc, char ** argv) {
   if (argc != 2) {

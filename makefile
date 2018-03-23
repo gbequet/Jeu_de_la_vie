@@ -1,24 +1,36 @@
 .PHONY : all clean archive doc
 
+CC=gcc
+CFLAGS=-W -Wall
+INC=inc/
+SRC=src/
+OBJ=obj/
+BIN=bin/
+
 # executable
 all : main.o jeu.o io.o grille.o
-	gcc -o all main.c jeu.c io.c grille.c -g
+	$(CC) -o all $(SRC)main.c $(SRC)jeu.c $(SRC)io.c $(SRC)grille.c -g
+	mv $@ $(BIN)
 
-main.o : main.c grille.h io.h jeu.h 
-	gcc -c main.c
+main.o : $(SRC)main.c $(INC)grille.h $(INC)io.h $(INC)jeu.h 
+	$(CC) -c $(SRC)main.c $(CFLAGS)
+	mv $@ $(OBJ)
 
-jeu.o : jeu.c jeu.h
-	gcc -c jeu.c
+jeu.o : $(SRC)jeu.c $(INC)jeu.h
+	$(CC) -c $(SRC)jeu.c $(CFLAGS)
+	mv $@ $(OBJ)
 
-io.o : io.c io.h
-	gcc -c io.c
+io.o : $(SRC)io.c $(INC)io.h
+	$(CC) -c $(SRC)io.c $(CFLAGS)
+	mv $@ $(OBJ)
 
-grille.o : grille.c grille.h
-	gcc -c grille.c
+grille.o : $(SRC)grille.c $(INC)grille.h
+	$(CC) -c $(SRC)grille.c $(CFLAGS)
+	mv $@ $(OBJ)
 
 # supprime .o et all
 clean :
-	rm -rf *.o all
+	rm -rf $(OBJ)*.o $(BIN)all
 
 # Documentation
 doc:
@@ -26,5 +38,5 @@ doc:
 
 # archive
 archive :
-	tar -cvf *.c *.h makefile .gitignore jeu_de_la_vie.tar
-	gzip jeu_de_la_vie.tar
+	tar -cvf bequet_guillaume_jdv.tar $(SRC)*.c $(INC)*.h makefile .gitignore Doxyfile
+	gzip bequet_guillaume_jdv.tar

@@ -3,7 +3,7 @@
  * \brief Fonctions d'affichage de la grille et de debut du jeu
  */
 
-#include "io.h"
+#include "../inc/io.h"
 
 static void affiche_trait(int c){
   int i;
@@ -56,7 +56,7 @@ void debut_jeu(grille *g, grille *gc) {
     switch (c) {
       case '\n' :
         { // touche "entree" pour évoluer
-          evolue(g, gc, distance, compte_voisins, vieillissement); // la distance par defaut est 1 et le voisinage par default est cyclique
+          evolue(g, gc, distance, compte_voisins, vieillissement);
           efface_grille(gc);
           affiche_grille(g, nb_pas);
           nb_pas++;
@@ -71,7 +71,7 @@ void debut_jeu(grille *g, grille *gc) {
             compte_voisins = compte_voisins_vivants_nc;
           }
           else{
-            printf("Voisinage cyclique a nouveau activé\n");
+            printf("\r\e[0KVoisinage cyclique a nouveau activé\n");
             compte_voisins = compte_voisins_vivants_c;
           }
           printf("\n\e[%dA", 3); // remonter de 3 lignes
@@ -89,8 +89,8 @@ void debut_jeu(grille *g, grille *gc) {
         }
         else
         {
-          printf("Vieillissement activé\n");
-          vieillissement = true;;
+          printf("\r\e[0KVieillissement activé\n");
+          vieillissement = true;
         }
         printf("\n\e[%dA", 3); // remonter de 3 lignes
         // printf("\r"); // repartir a la marge
@@ -98,9 +98,9 @@ void debut_jeu(grille *g, grille *gc) {
         }
       case 'n' :
         { // touche 'n' pour modifier la distance de voisinage
-          printf("Veuillez entrer un nouvelle distance de voisinage : \n");
+          printf("\r\e[0KVeuillez entrer un nouvelle distance de voisinage : \n");
           scanf("%d", &distance);
-          printf("À partir de ce moment un voisinage de distance %d sera utilisé\n", distance);
+          printf("\r\e[0KÀ partir de ce moment un voisinage de distance %d sera utilisé\n", distance);
 
           getchar();
           printf("\n\e[%dA", 5); // remonter de 3 lignes

@@ -3,7 +3,7 @@
  * \brief Fonctions appelées lors du jeu
  */
 
-#include "jeu.h"
+#include "../inc/jeu.h"
 #include <stdlib.h>
 
 int valeur_cyclique(int val, int cycle) { // Cycle > 0
@@ -40,11 +40,10 @@ int compte_voisins_vivants_c(int i, int j, int distance, grille g){
 int compte_voisins_vivants_nc(int i, int j, int distance, grille g){
   int nb_voisin = 0;
 
-  for (int n = max(0, i-distance); n <= min(g.nbl-1, i+distance); n++)
+  for (int n = max(0, i-distance); n <= min(g.nbl-1, i+distance); n++) 
   {
     for (int m = max(0, j-distance); m <= min(g.nbc-1, j+distance); m++)
     {
-      // il faut que la cellule voisine ne se trouve pas sur un bord de la grille
       if ((n != i || m != j) && est_vivante(n, m, g))
           nb_voisin++;
     }
@@ -66,21 +65,21 @@ void evolue(grille *g, grille *gc, int dist, int (*compte_v)(int, int, int, gril
         if (est_vivante(i, j, *gc))
         {
           if (compte_v(i, j, dist, *gc) != 2 && compte_v(i, j, dist, *gc) != 3)
-            set_morte(i, j, *g); // si la cellule est vivante et qu'elle n'a ni 2 ni 3 voisins vivants alors elle meurt
+            set_morte(i, j, *g);
           else
-          { // si la cellules reste en vie
+          { 
             if(vieil){
-            if(gc->cellules[i][j] == 8)
-              set_morte(i, j, *g); // elle meurt si ca fait 8 pas de temps
-            else
-              set_vivante(i, j, *g); // sinon on incremente son age
+              if(gc->cellules[i][j] == 8)
+                set_morte(i, j, *g); 
+              else
+                set_vivante(i, j, *g); 
             }
           }
         }
         else
         {
           if (compte_v(i, j, dist, *gc) == 3)
-            set_vivante(i, j, *g); // si la cellule est morte et qu'elle a 3 voisins vivants alors elle vit
+            set_vivante(i, j, *g);
         }
       }
     }
