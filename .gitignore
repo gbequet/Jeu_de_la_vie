@@ -1,6 +1,5 @@
-*.o
-all
 all.dSYM/
 .DS_Store
 html/
-latex/
+bin/all
+obj/*.o

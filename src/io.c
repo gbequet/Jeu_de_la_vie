@@ -103,7 +103,7 @@ void debut_jeu(grille *g, grille *gc) {
           printf("\r\e[0KÀ partir de ce moment un voisinage de distance %d sera utilisé\n", distance);
 
           getchar();
-          printf("\n\e[%dA", 5); // remonter de 3 lignes
+          printf("\n\e[%dA", 5); // remonter de 5 lignes
           break;
         }
       default :

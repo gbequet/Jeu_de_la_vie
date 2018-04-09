@@ -1,27 +1,38 @@
 .PHONY : all clean archive doc
 
 CC=gcc
-CFLAGS=-W -Wall
+CFLAGS=-W -Wall -Iinclude -I/opt/X11/include -I/opt/X11/include/cairo -L/opt/X11/lib -lX11 -lcairo
+LDFLAGS=-Iinclude -I/opt/X11/include -I/opt/X11/include/cairo -L/opt/X11/lib -lX11 -lcairo
 INC=inc/
 SRC=src/
 OBJ=obj/
 BIN=bin/
+MODE=GRAPHIQUE
+IO=io_graphique
+MAIN=main
+
+ifeq ($(MODE), TEXTE)
+	IO=io
+	MAIN=main_texte
+	CFLAGS=-W -Wall
+	LDFLAGS=
+endif
 
 # executable
-all : main.o jeu.o io.o grille.o
-	$(CC) -o all $(SRC)main.c $(SRC)jeu.c $(SRC)io.c $(SRC)grille.c -g
+all : $(MAIN).o jeu.o $(IO).o grille.o
+	$(CC) -o all $(SRC)$(MAIN).c $(SRC)jeu.c $(SRC)$(IO).c $(SRC)grille.c -g $(LDFLAGS)
 	mv $@ $(BIN)
-
-main.o : $(SRC)main.c $(INC)grille.h $(INC)io.h $(INC)jeu.h 
-	$(CC) -c $(SRC)main.c $(CFLAGS)
+		
+$(MAIN).o : $(SRC)$(MAIN).c $(INC)grille.h $(INC)$(IO).h $(INC)jeu.h 
+	$(CC) -c $(SRC)$(MAIN).c $(CFLAGS)
 	mv $@ $(OBJ)
 
 jeu.o : $(SRC)jeu.c $(INC)jeu.h
 	$(CC) -c $(SRC)jeu.c $(CFLAGS)
 	mv $@ $(OBJ)
 
-io.o : $(SRC)io.c $(INC)io.h
-	$(CC) -c $(SRC)io.c $(CFLAGS)
+$(IO).o : $(SRC)$(IO).c $(INC)$(IO).h
+	$(CC) -c $(SRC)$(IO).c $(CFLAGS)
 	mv $@ $(OBJ)
 
 grille.o : $(SRC)grille.c $(INC)grille.h
