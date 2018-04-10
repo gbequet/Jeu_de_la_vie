@@ -15,15 +15,12 @@ void alloue_grille(int l, int c, grille* g) {
     g->nbc = c;
     g->nbl = l;
     
-    // on alloue un tableau de c cases *g->cellules
     g->cellules = malloc(l * sizeof(*g->cellules));
     
     for(int i = 0; i < l; i++)
     {
-        // pour chaque case de g->cellules on alloue un tableau de l cases de **g->cellules
         g->cellules[i] = malloc(c * sizeof(**g->cellules));
         
-        // on initialise toutes les cellules comme mortes
         for(int j = 0; j < c; j++)
             set_morte(i, j, *g);
     }
@@ -34,6 +31,8 @@ void libere_grille(grille* g){
         free(g->cellules[i]);
     
     free(g->cellules);
+    g->nbl = 0;
+    g->nbc = 0;
 }
 
 void init_grille_from_file(char const*const filename, grille *const g) {

@@ -71,12 +71,21 @@ inline void set_vivante(int i, int j, grille g) {
  * \param i indice de la ligne
  * \param j indice de la colonne
  * \param g grille a laquelle appartient la cellule
- * \return void mais la liste a ete modifier par effet de bord
+ * \return void mais la cellule[i][j] est morte
  */
 inline void set_morte(int i, int j, grille g) {
   g.cellules[i][j] = 0;
 }
 
+/**
+ * \fn set_non_viable(int i, int j, grille g)
+ * \brief 
+ *
+ * \param i indice de la ligne
+ * \param j indice de la colonne
+ * \param g grille a laquelle appartient la cellule
+ * \return void mais la cellule[i][j] est non viable
+ */
 inline void set_non_viable(int i, int j, grille g){
   g.cellules[i][j] = -1;
 }
@@ -94,6 +103,15 @@ inline bool est_vivante(int i, int j, grille g){
   return g.cellules[i][j] >= 1;
 }
 
+/**
+ * \fn est_viable(int i, int j, grille g)
+ * \brief Teste si la cellule(i,j) est viable
+ *
+ * \param i indice de la ligne
+ * \param j indice de la colonne
+ * \param g grille a laquelle appartient la cellule
+ * \return un booleen
+ */
 inline bool est_viable(int i, int j, grille g) {
   return g.cellules[i][j] != -1;
 }

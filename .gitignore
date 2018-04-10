@@ -3,3 +3,4 @@ all.dSYM/
 html/
 bin/all
 obj/*.o
+explications.txt
